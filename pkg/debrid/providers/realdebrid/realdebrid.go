@@ -669,6 +669,8 @@ func (r *RealDebrid) getDownloadLink(account *account.Account, file *types.File)
 		ExpiresAt:    now.Add(r.autoExpiresLinksAfter),
 	}
 
+	r.logger.Trace().Msgf("got download link for %s: %s", data.Filename, data.Link)
+
 	// Store the link in the account
 	account.StoreDownloadLink(dl)
 	return dl, nil
